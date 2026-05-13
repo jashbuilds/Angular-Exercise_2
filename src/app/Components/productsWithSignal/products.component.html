@@ -1,0 +1,58 @@
+
+<div class="productForm">
+    <form class="border border-1 p-4 rounded">
+        <div class="mb-3">
+            <label for="itemName" class="form-label fw-medium fs-5 text-secondary">Item
+                Name</label>
+            &nbsp;
+            <input type="text" id="itemName" name="itemName"
+                placeholder="Type Name Here" #itemName="ngModel"
+                class="form-control"
+                [ngModel]="productsData().itemName"
+                (ngModelChange)="updateField('itemName', $event)"
+                required
+                [class.is-invalid]="itemName.invalid && itemName.touched && itemName.dirty"
+                [class.is-valid]="itemName.valid">
+            <span class="invalid-feedback">Please enter appropriate Item
+                Name!</span>
+        </div>
+
+        <div class="mb-3">
+            <label for="description"
+                class="form-label fw-medium fs-5 text-secondary">Description</label> &nbsp;
+            <textarea type="text" id="description" name="description"
+                placeholder="Type Description Here" #description="ngModel"
+                class="form-control"
+                [ngModel]="productsData().description"
+                (ngModelChange)="updateField('description', $event)"
+                rows="3" required
+                [class.is-invalid]="description.invalid && description.touched && description.dirty"
+                [class.is-valid]="description.valid"></textarea>
+            <span class="invalid-feedback">Please enter appropriate
+                Description!</span>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label fw-medium fs-5 text-secondary">Price</label>
+            &nbsp;
+            <input type="number" id="price" name="price" min="0"
+                placeholder="Enter Price" #price="ngModel"
+                class="form-control"
+                [ngModel]="productsData().price"
+                (ngModelChange)="updateField('price', $event)"
+                required
+                [class.is-invalid]="price.invalid && price.touched && price.dirty"
+                [class.is-valid]="price.valid"> &nbsp;
+            <span class="invalid-feedback">Please enter appropriate
+                Price!</span>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary"
+            [disabled]="!isFormValid()"
+            (click)="onSubmit()">Submit</button>
+    </form>
+
+    <hr >
+</div>

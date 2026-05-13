@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Red Hat Display", sans-serif;
+}
+
+::selection {
+    background-color: rgba(208, 150, 150, 0.526);
+}
+
+.heading {
+    background: transparent !important;
+    backdrop-filter: blur(5px);
+}
+
+.expensive {
+    background-color: red;
+    color: white !important;
+}
+
+.overflow-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.firstForm {
+    margin-top: 150px;
+}
