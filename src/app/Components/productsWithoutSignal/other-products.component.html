@@ -1,6 +1,6 @@
 
 <div class="productForm">
-    <form class="border border-1 p-4 rounded">
+    <form class="border border-1 p-4 rounded" #form="ngForm">
         <div class="mb-3">
             <label for="itemName" class="form-label fw-medium fs-5 text-secondary">Item
                 Name</label>
@@ -33,7 +33,7 @@
             <label for="price" class="form-label fw-medium fs-5 text-secondary">Price</label>
             &nbsp;
             <input type="number" id="price" name="price" min="0" #price="ngModel"
-                placeholder="Enter Price"
+                placeholder="Enter Price" (input)="onPriceInput($event)"
                 class="form-control"
                 required 
                 [class.is-invalid]="price.invalid && price.dirty && price.touched"
@@ -44,7 +44,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()"
-            (click)="onSubmit()">Add Item</button>
+            (click)="onSubmit(form)">Add Item</button>
     </form>
 
     <hr>

@@ -1,5 +1,5 @@
 import { Component, signal, output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
@@ -22,7 +22,14 @@ export class ProductsComponent {
     )
   }
 
-  onSubmit() {
+  onPriceInput(event: any) {
+    const input = event.target as HTMLInputElement;
+    input.value = input.value.replace(/[^0-9]/g, '');
+  }
+
+  onSubmit(form: NgForm) {
+    if(form.invalid) return
+    
     this.userFormData.emit(this.productsData())
 
     this.productsData.set({
@@ -30,6 +37,7 @@ export class ProductsComponent {
       description: '',
       price: null
     })
+    form.reset()
   }
 
   updateField(field: any, value: any) {
