@@ -11,7 +11,7 @@ export class ProductsComponent {
   productsData = signal({
     itemName: '',
     description: '',
-    price: null
+    price: null as string | null
   })
 
   userFormData = output<any>()
@@ -22,14 +22,16 @@ export class ProductsComponent {
     )
   }
 
-  onPriceInput(event: any) {
-    const input = event.target as HTMLInputElement;
-    input.value = input.value.replace(/[^0-9]/g, '');
+  onPriceInput(value: any) {
+    this.productsData.update(data => ({
+      ...data,
+      price: value.replace(/[^0-9]/g, '')
+    }))
   }
 
   onSubmit(form: NgForm) {
-    if(form.invalid) return
-    
+    if (form.invalid) return
+
     this.userFormData.emit(this.productsData())
 
     this.productsData.set({

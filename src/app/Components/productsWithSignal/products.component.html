@@ -35,10 +35,10 @@
             <label for="price" class="form-label fw-medium fs-5 text-secondary">Price</label>
             &nbsp;
             <input type="number" id="price" name="price" min="0"
-                placeholder="Enter Price" #price="ngModel" (input)="onPriceInput($event)"
+                placeholder="Enter Price" #price="ngModel" 
                 class="form-control"
                 [ngModel]="productsData().price"
-                (ngModelChange)="updateField('price', $event)"
+                (ngModelChange)="updateField('price', $event); onPriceInput($event)"
                 required
                 [class.is-invalid]="price.invalid && price.touched && price.dirty"
                 [class.is-valid]="price.valid"> &nbsp;
